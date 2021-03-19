@@ -1,0 +1,1 @@
+from .serializer_class_mixin import SerializerClassMixin
