@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 
 
@@ -8,7 +9,7 @@ class Event(models.Model):
     )
     start_date = models.DateField()
     users = models.ManyToManyField(
-        to='User',
+        to=get_user_model(),
         through='EventUser',
         through_fields=(
             'event',
@@ -17,3 +18,10 @@ class Event(models.Model):
         verbose_name='Пользователи',
         related_name='events',
     )
+
+    class Meta:
+        ordering = [
+            'id',
+        ]
+        verbose_name = 'Событие'
+        verbose_name_plural = 'События'
